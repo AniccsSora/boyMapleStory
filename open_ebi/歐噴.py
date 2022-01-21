@@ -30,9 +30,12 @@ if __name__ == "__main__":
     tar = find_all(ebi_img, confidence=0.90)
 
     if check_message_box(f"螢幕上有 {len(tar)} 個艾比箱子嗎?"):
-        for box in tar:
+        for current_num, box in enumerate(tar):
+            print(f"格數進度: {current_num+1}/{len(tar)}")
             if find_all_cnt(ebi_img, confidence=0.9) > 0:
+                """點箱子前先防呆"""
                 click_box_(box)
+
             for times in range(50):
                 _f1 = find_and_click(ok_img)
                 if _f1 is not True:
