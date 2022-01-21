@@ -1,10 +1,12 @@
 import pyautogui
 from util import *
+from random import randint
 import os
 
 def click_box_(box_position):
-    pyautogui.moveTo(box, duration=0.1)
-    pyautogui.click(clicks=2, interval=0.1)
+    pyautogui.moveTo(box, duration=0.05)
+    pyautogui.moveRel(randint(-5, 5), randint(-5, 5))
+    pyautogui.click(clicks=2, interval=0.05)
 
 
 if __name__ == "__main__":

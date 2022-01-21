@@ -1,5 +1,7 @@
 import pyautogui
 import os
+from random import randint
+
 
 def check_message_box(msg):
     res = None
@@ -28,8 +30,9 @@ def find_and_click(img, tar_limit=1, confidence=0.90):
     targets = pyautogui.locateAllOnScreen(img, grayscale=False, confidence=confidence)
     res = [target for target in targets]
     if len(res) > 0:
-        pyautogui.moveTo(res[0], duration=0.1)
-        pyautogui.click(clicks=1, interval=0.1)
+        pyautogui.moveTo(res[0], duration=0.05)
+        pyautogui.moveRel(randint(-10, 10), randint(-5, 5))
+        pyautogui.click(clicks=1, interval=0.05)
     # if len(res) == 0:
     #     pyautogui.alert(text=f"沒有在螢幕中找到 {img} (confidence:{confidence})",
     #                     title='警告', button='OK')
