@@ -35,8 +35,10 @@ if __name__ == "__main__":
                 click_box_(box)
             for times in range(50):
                 _f1 = find_and_click(ok_img)
+                if _f1 is not True:
+                    break
                 _f2 = find_and_click(yes_img)
-                if (_f1 is not True) or (_f2 is not True):
+                if _f2 is not True:
                     break
     else:
          print("不開始，程式結束")
