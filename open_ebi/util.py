@@ -27,9 +27,11 @@ def find_and_click(img, tar_limit=1, confidence=0.90):
     assert os.path.exists(img)
     targets = pyautogui.locateAllOnScreen(img, grayscale=False, confidence=confidence)
     res = [target for target in targets]
+    do_flag = False
     if len(res) > 0:
         pyautogui.moveTo(res[0], duration=0.1)
         pyautogui.click(clicks=1, interval=0.1)
+        do_flag = True
     # if len(res) == 0:
     #     pyautogui.alert(text=f"沒有在螢幕中找到 {img} (confidence:{confidence})",
     #                     title='警告', button='OK')
@@ -38,7 +40,7 @@ def find_and_click(img, tar_limit=1, confidence=0.90):
     #                          f"(confidence:{confidence})",
     #                     title='警告', button='OK')
     #     exit(87)
-
+    return do_flag
     # for box in res:
     #     pyautogui.moveTo(box, duration=0.5)
     #     pyautogui.click(clicks=1, interval=0.25)
